@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript1</title>
+    <style>
+      .box1{
+        width: 300px;
+        height: 200px;
+        background-color: lightblue;
+        text-align: center;
+        padding-top: 50px;
+       margin: auto;
+       margin-top: 200px;
+      }
+      h3{
+        color: red;
+      }
+        h4{
+            color: green;
+        }
+       button{
+        margin: 10px;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 20px;
+        background-color: orchid;
+        color: white;
+       }
+       button:hover{
+        background-color: purple;
+       }
+       
+    </style>
+</head>
+<body>
+    <div class="box1">
+    <h3 id="msgOne">JavaScript1</h3>
+
+    <h4 id="msgTwo">Hello World</h4>
+
+    <button onclick="changeText()">click me</button>
+
+    <button onclick="resetText()">Reset</button>
+    </div>
+
+</body>
+<script>
+
+    function resetText() {
+        document.getElementById("msgOne").innerHTML = "JavaScript1"
+        document.getElementById("msgTwo").innerHTML = "Hello World"
+    }
+    function changeText() {
+        document.getElementById("msgOne").innerHTML = "JavaScript2"
+        document.getElementById("msgTwo").innerHTML = "Hello World Again"
+    }
+    document.getElementById("msgOne")
+
+    document.getElementById("msgTwo")
+
+</script>
+</html>
