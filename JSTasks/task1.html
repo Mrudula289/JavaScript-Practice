@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Performance Tracker</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f9;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .employee {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .employee:last-child {
+      border-bottom: none;
+    }
+
+    .highlight {
+      color: green;
+      font-weight: bold;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Employee Performance Tracker</h1>
+
+  <div class="container">
+    <div id="output"></div>
+
+    <button onclick="runTasks()">Run Tasks</button>
+  </div>
+
+  <script>
+    const employees = [
+      {
+        name: "John",
+        tasks: [
+          { title: "Task1", completed: true },
+          { title: "Task2", completed: false }
+        ]
+      },
+      {
+        name: "Jane",
+        tasks: [
+          { title: "Task1", completed: true },
+          { title: "Task2", completed: true }
+        ]
+      }
+    ];
+
+    function runTasks() {
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+
+      // 1. Count completed tasks
+      employees.forEach(emp => {
+        const completed = emp.tasks.filter(t => t.completed).length;
+        output.innerHTML += `<div class="employee">${emp.name} completed tasks: ${completed}</div>`;
+      });
+
+      // 2. Find best employee
+      let best = "";
+      let highest = 0;
+
+      employees.forEach(emp => {
+        const completed = emp.tasks.filter(t => t.completed).length;
+        const rate = completed / emp.tasks.length;
+
+        if (rate > highest) {
+          highest = rate;
+          best = emp.name;
+        }
+      });
+
+      output.innerHTML += `<div class="employee highlight">Best Employee: ${best}</div>`;
+
+      // 3. Add new task
+      employees.forEach(emp => {
+        emp.tasks.push({ title: "Task3", completed: false });
+      });
+
+// 4. Employees who completed all tasks
+employees.forEach(emp => {
+  const allDone = emp.tasks.every(task => task.completed);
+
+  if (allDone) {
+    console.log(emp.name + " completed all tasks");
+  }
+});
+    }
+  </script>
+
+</body>
+</html>
